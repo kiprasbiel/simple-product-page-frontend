@@ -1,0 +1,18 @@
+version: "3.4"
+services:
+  vue-graphql:
+    image: node:16.18.1
+    working_dir: /var/www/html/app/mip-public-frontend/
+    entrypoint: /bin/bash
+    user: "node"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/html/app/mip-public-frontend
+    tty: true
+    networks:
+      - kinfirm-task_sail
+
+networks:
+  kinfirm-task_sail:
+    external: true
