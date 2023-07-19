@@ -11,13 +11,14 @@
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+        <RouterLink class="text-sm font-semibold leading-6 text-gray-900" to="/login">Log in <span aria-hidden="true">&rarr;</span></RouterLink>
       </div>
     </nav>
   </header>
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router'
 import { PopoverGroup } from '@headlessui/vue'
 </script>
 
