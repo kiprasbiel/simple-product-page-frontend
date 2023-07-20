@@ -37,7 +37,11 @@ const router = createRouter({
 
 router.beforeEach(async (to: ToInterface) => {
   let isLoggedIn;
-  await axios.head('http://localhost/api/me').then(() => {
+  await axios.head('http://localhost/api/me', {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
+    }
+  }).then(() => {
     isLoggedIn = true;
   }).catch(() => {
     isLoggedIn = false;
@@ -47,7 +51,7 @@ router.beforeEach(async (to: ToInterface) => {
     router.push('/login');
   }
   else if (!to.meta.requiresAuth && isLoggedIn) {
-    router.push('/');
+    router.push('/about');
   }
 });
 
