@@ -9,7 +9,7 @@
       </div>
       <template v-if="route.meta.requiresAuth">
         <PopoverGroup class="hidden lg:flex lg:gap-x-12">
-          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
+          <RouterLink class="text-sm font-semibold leading-6 text-gray-900" to="/products">Products</RouterLink>
         </PopoverGroup>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <div @click="logout()" class="text-sm font-semibold leading-6 text-gray-900 cursor-pointer">Log out<span aria-hidden="true">&rarr;</span></div>
