@@ -26,7 +26,7 @@ axios.get('http://localhost/api/products', {
 </script>
 
 <template>
-  <div class="grid grid-cols-3 justify-items-center">
+  <div class="grid grid-cols-4 justify-items-center">
     <template v-for="product in products">
       <ProductCard :SKU="product.SKU" :id="product.id" :created_at="product.created_at" :photo_url="product.photo_url" :size="product.size"/>
     </template>
