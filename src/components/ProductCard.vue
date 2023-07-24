@@ -14,7 +14,7 @@ defineProps<productResponse>();
 
 <template>
   <div class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-    <a class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
+    <a class="relative mx-3 mt-3 flex h-60 overflow-hidden justify-center" href="#">
       <img class="object-cover" :src="photo_url" alt="product image" />
     </a>
     <div class="mt-4 px-5 pb-5">
