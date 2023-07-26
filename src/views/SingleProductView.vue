@@ -15,10 +15,10 @@ interface productResponse {
     description: String
   }
   tags: [String],
-  stocks: {
+  stocks: [{
     stock: Number,
     location: String
-  }
+  }]
 }
 
 const route = useRoute();
@@ -54,8 +54,11 @@ axios.get('http://localhost/api/product/' + route.params.id, {
         <div>
           Size: {{ product.size }}
         </div>
-        <div>
+        <div v-if="product.stocks.length > 0">
           <Select v-model="product.stocks"/>
+        </div>
+        <div v-else>
+          Out of stock
         </div>
       </div>
     </div>
