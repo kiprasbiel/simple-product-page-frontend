@@ -32,17 +32,16 @@ axios.get('http://localhost/api/product/' + route.params.id, {
 })
     .then((response: axios.AxiosResponse<productResponse>) => {
       product.value = response.data;
-      console.log(product.value);
     });
 
 </script>
 
 <template>
 
-  <template v-if="product">
-    <div class="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
+  <div class="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
+    <template v-if="product">
       <div>
-        <img class="w-full" alt="image of a girl posing" :src="product.photo_url" />
+        <img class="w-full" alt="image of a girl posing" :src="product.photo_url"/>
       </div>
       <div class="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
         <div class="pb-6">
@@ -61,9 +60,11 @@ axios.get('http://localhost/api/product/' + route.params.id, {
           Out of stock
         </div>
       </div>
-    </div>
-  </template>
-
+    </template>
+    <template v-else>
+      <div><b>Product not found</b></div>
+    </template>
+  </div>
 </template>
 
 <style scoped>
