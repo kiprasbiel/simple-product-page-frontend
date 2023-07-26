@@ -2,7 +2,7 @@
 
 import {useRoute} from "vue-router";
 import axios from "axios";
-import {ref} from "vue";
+import {Ref, ref} from "vue";
 import Select from "@/components/Select.vue";
 
 interface productResponse {
@@ -23,7 +23,7 @@ interface productResponse {
 
 const route = useRoute();
 
-const product = ref();
+const product: Ref<productResponse | undefined> = ref();
 
 axios.get('http://localhost/api/product/' + route.params.id, {
   headers: {
