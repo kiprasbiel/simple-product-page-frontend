@@ -14,9 +14,9 @@ interface productResponse {
   content: {
     description: String
   }
-  tags: [{
+  tag: {
     title: String
-  }],
+  },
   stocks: [{
     stock: Number,
     location: String
@@ -48,8 +48,8 @@ axios.get('http://localhost/api/product/' + route.params.id, {
       <div class="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
         <div class="pb-6">
           <h1 class="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 mt-2">{{ product.SKU }}</h1>
-          <div class="pt-2" v-if="product.tags.length > 0">
-            <span v-for="tag in product.tags" class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{ tag.title }}</span>
+          <div class="pt-2" v-if="product.tag">
+            <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{ product.tag.title }}</span>
           </div>
         </div>
         <div>
