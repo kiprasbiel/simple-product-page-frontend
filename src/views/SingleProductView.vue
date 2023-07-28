@@ -101,10 +101,10 @@ function loadSimilarProducts(id) {
         </div>
       </div>
       <div v-if="similarProducts">
-        <div>
+        <div class="text-center text-2xl">
           Similar products:
         </div>
-        <div class="md:flex items-start justify-center py-12 px-4">
+        <div class="md:flex items-start justify-center py-5 px-4">
           <template v-for="tag in similarProducts">
             <template v-for="product in tag.products">
               <ProductCard :SKU="product.SKU" :id="product.id" :created_at="product.created_at" :photo_url="product.photo_url" :size="product.size"/>
