@@ -5,6 +5,7 @@ import LoginView from "@/views/LoginView.vue";
 import axios from "axios";
 import RegisterView from "@/views/RegisterView.vue";
 import ProductView from "@/views/ProductView.vue";
+import SingleProductView from "@/views/SingleProductView.vue";
 
 interface ToInterface extends RouteLocationNormalized {
     meta: { requiresAuth: boolean }
@@ -46,6 +47,12 @@ const router = createRouter({
       component: ProductView,
       meta: { requiresAuth: true }
     },
+    {
+      path: '/products/:id',
+      name: 'Product',
+      component: SingleProductView,
+      meta: { requiresAuth: true }
+    }
   ]
 })
 
