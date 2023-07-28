@@ -14,9 +14,9 @@ interface productResponse {
   content: {
     description: String
   }
-  tag: {
+  tags: [{
     title: String
-  },
+  }],
   stocks: [{
     stock: Number,
     location: String
