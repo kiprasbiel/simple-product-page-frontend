@@ -6,12 +6,15 @@ import {Ref, ref} from "vue";
 import Select from "@/components/Select.vue";
 import ProductCard from "@/components/ProductCard.vue";
 
-interface productResponse {
+interface Product {
   id: Number,
   SKU: String,
   size: String,
   photo_url: String,
   created_at: String
+}
+
+interface ProductRelations {
   content: {
     description: String
   }
@@ -24,15 +27,11 @@ interface productResponse {
   }]
 }
 
+type productResponse = Product & ProductRelations;
+
 interface similarProductsResponse {
   products: [
-    {
-      id: Number,
-      SKU: String,
-      size: String,
-      photo_url: String,
-      created_at: String
-    }
+    Product
   ],
   title: String,
   id: Number
