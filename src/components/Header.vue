@@ -7,19 +7,49 @@
           <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
         </a>
       </div>
-      <PopoverGroup class="hidden lg:flex lg:gap-x-12">
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
-      </PopoverGroup>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <template v-if="route.meta.requiresAuth">
+        <PopoverGroup class="hidden lg:flex lg:gap-x-12">
+          <RouterLink class="text-sm font-semibold leading-6 text-gray-900" to="/products">Products</RouterLink>
+        </PopoverGroup>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div @click="logout()" class="text-sm font-semibold leading-6 text-gray-900 cursor-pointer">Log out<span aria-hidden="true">&rarr;</span></div>
+        </div>
+      </template>
+
+      <div v-else-if="route.name === 'Login'" class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <RouterLink class="text-sm font-semibold leading-6 text-gray-900" to="/register">Register <span aria-hidden="true">&rarr;</span></RouterLink>
+    </div>
+      <div v-else-if="!route.meta.requiresAuth" class="hidden lg:flex lg:flex-1 lg:justify-end">
         <RouterLink class="text-sm font-semibold leading-6 text-gray-900" to="/login">Log in <span aria-hidden="true">&rarr;</span></RouterLink>
       </div>
     </nav>
   </header>
 </template>
 
-<script setup>
-import { RouterLink } from 'vue-router'
+<script setup lang="ts">
+import {RouteLocationNormalized, RouterLink, useRoute, useRouter} from 'vue-router'
 import { PopoverGroup } from '@headlessui/vue'
+import axios from "axios";
+
+
+interface routeMeta extends RouteLocationNormalized {
+  meta: { requiresAuth: boolean }
+}
+
+const route = <routeMeta> useRoute();
+const router = useRouter();
+
+function logout() {
+  axios.post('http://localhost/api/logout', {}, {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
+    }
+  }).then(() => {
+
+    router.push('login');
+  });
+}
+
 </script>
 
 <style scoped>
