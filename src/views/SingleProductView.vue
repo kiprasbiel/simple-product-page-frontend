@@ -100,7 +100,7 @@ function loadSimilarProducts(id) {
           </div>
         </div>
       </div>
-      <div v-if="similarProducts">
+      <div v-if="similarProducts.length">
         <div class="text-center text-2xl">
           Similar products:
         </div>
