@@ -42,7 +42,7 @@ const router = createRouter({
 
 router.beforeEach(async (to: ToInterface) => {
   let isLoggedIn;
-  await axios.head('http://localhost/api/me', {
+  await axios.head(import.meta.env.VITE_API_ENDPOINT + 'me', {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
     }

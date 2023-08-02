@@ -31,7 +31,7 @@ interface paginationMetaType {
 }
 
 export const usePaginationStore = defineStore("pagination", () => {
-    const apiUrl: Ref<String> = ref('http://localhost/api/products');
+    const apiUrl: Ref<String> = ref(import.meta.env.VITE_API_ENDPOINT  + 'products');
 
     const page: Ref<number> = ref(1);
 

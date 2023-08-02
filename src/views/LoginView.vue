@@ -10,7 +10,7 @@ import Input from "@/components/Input.vue";
   const message: Ref<string> = ref('');
 
   function login() {
-    axios.post('http://localhost/api/login', {
+    axios.post(import.meta.env.VITE_API_ENDPOINT + 'login', {
       email: email.value,
       password: password.value
     }).then((response) => {

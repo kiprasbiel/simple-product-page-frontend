@@ -42,7 +42,7 @@ const route = useRoute();
 const product: Ref<productResponse> = ref({});
 const similarProducts: Ref<[similarProductsResponse]> = ref({});
 
-axios.get('http://localhost/api/product/' + route.params.id, {
+axios.get(import.meta.env.VITE_API_ENDPOINT + 'product/' + route.params.id, {
   headers: {
     'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
   }
@@ -54,7 +54,7 @@ axios.get('http://localhost/api/product/' + route.params.id, {
 });
 
 function loadSimilarProducts(id) {
-  axios.get('http://localhost/api/product/' + id + '/similar', {
+  axios.get(import.meta.env.VITE_API_ENDPOINT + 'product/' + id + '/similar', {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
     }

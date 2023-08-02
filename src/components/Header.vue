@@ -31,7 +31,6 @@ import {RouteLocationNormalized, RouterLink, useRoute, useRouter} from 'vue-rout
 import { PopoverGroup } from '@headlessui/vue'
 import axios from "axios";
 
-
 interface routeMeta extends RouteLocationNormalized {
   meta: { requiresAuth: boolean }
 }
@@ -40,7 +39,7 @@ const route = <routeMeta> useRoute();
 const router = useRouter();
 
 function logout() {
-  axios.post('http://localhost/api/logout', {}, {
+  axios.post(import.meta.env.VITE_API_ENDPOINT + 'logout', {}, {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
     }
