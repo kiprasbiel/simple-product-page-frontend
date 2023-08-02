@@ -20,7 +20,7 @@ function register() {
   }).then((response) => {
     if(response.data.token){
       localStorage.setItem("kinfirm-token", response.data.token);
-      router.push('products')
+      router.go(0);
     }
     else {
       message.value = response.data.message;
