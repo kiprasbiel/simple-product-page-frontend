@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid'
-import {usePaginationStore} from "@/router/PaginationStore";
+import {usePaginationStore} from "@/stores/PaginationStore";
 
 const paginationStore = usePaginationStore();
 

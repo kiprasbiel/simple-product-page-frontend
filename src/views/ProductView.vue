@@ -2,7 +2,7 @@
 
 import ProductCard from "@/components/ProductCard.vue";
 import Pagination from "@/components/Pagination.vue";
-import {usePaginationStore} from "@/router/PaginationStore";
+import {usePaginationStore} from "@/stores/PaginationStore";
 
 const paginationStore = usePaginationStore();
 paginationStore.getProducts();
