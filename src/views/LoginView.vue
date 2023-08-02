@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {Ref, ref} from "vue";
-  import axios from "axios";
+import axios from "axios";
 import ErrorMessage from "@/components/errorMessage.vue";
+import router from "@/router";
 import Input from "@/components/Input.vue";
 
   const email: Ref<string> = ref('');
@@ -15,6 +16,7 @@ import Input from "@/components/Input.vue";
     }).then((response) => {
       if(response.data.token){
         localStorage.setItem("kinfirm-token", response.data.token);
+        router.push('products')
       }
       else {
         message.value = response.data.message;
