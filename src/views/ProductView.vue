@@ -1,35 +1,22 @@
 <script setup lang="ts">
 
 import ProductCard from "@/components/ProductCard.vue";
-import axios from "axios";
-import type {Ref} from "vue";
-import {ref} from "vue";
+import Pagination from "@/components/Pagination.vue";
+import {usePaginationStore} from "@/router/PaginationStore";
 
-interface productResponse {
-  id: Number,
-  SKU: String,
-  size: String,
-  photo_url: String,
-  created_at: String
-}
-
-const products: Ref<[productResponse]|null> = ref(null);
-
-axios.get('http://localhost/api/products', {
-  headers: {
-    'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
-  }
-}).then((response: axios.AxiosResponse<[productResponse]>) => {
-  products.value = response.data;
-});
+const paginationStore = usePaginationStore();
+paginationStore.getProducts();
 
 </script>
 
 <template>
   <div class="grid grid-cols-4 justify-items-center">
-    <template v-for="product in products">
+    <template v-for="product in paginationStore.products">
       <ProductCard :SKU="product.SKU" :id="product.id" :photo_url="product.photo_url" :size="product.size"/>
     </template>
+  </div>
+  <div>
+    <Pagination :paginations="paginationStore.paginations"/>
   </div>
 </template>
 
