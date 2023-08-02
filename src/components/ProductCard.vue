@@ -4,8 +4,7 @@ interface productResponse {
   id: Number,
   SKU: String,
   size: String,
-  photo_url: String,
-  created_at: String
+  photo_url: String
 }
 
 defineProps<productResponse>();

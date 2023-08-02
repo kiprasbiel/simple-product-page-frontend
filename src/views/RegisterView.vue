@@ -12,7 +12,7 @@ const password_confirmation: Ref<string> = ref('');
 const message: Ref<string> = ref('');
 
 function register() {
-  axios.post('http://localhost/api/register', {
+  axios.post(import.meta.env.VITE_API_ENDPOINT + 'register', {
     email: email.value,
     password: password.value,
     name: name.value,
@@ -20,7 +20,7 @@ function register() {
   }).then((response) => {
     if(response.data.token){
       localStorage.setItem("kinfirm-token", response.data.token);
-      router.push('about')
+      router.go(0);
     }
     else {
       message.value = response.data.message;

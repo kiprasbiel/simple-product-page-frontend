@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {Ref, ref} from "vue";
-  import axios from "axios";
+import axios from "axios";
 import ErrorMessage from "@/components/errorMessage.vue";
+import router from "@/router";
 import Input from "@/components/Input.vue";
 
   const email: Ref<string> = ref('');
@@ -9,12 +10,13 @@ import Input from "@/components/Input.vue";
   const message: Ref<string> = ref('');
 
   function login() {
-    axios.post('http://localhost/api/login', {
+    axios.post(import.meta.env.VITE_API_ENDPOINT + 'login', {
       email: email.value,
       password: password.value
     }).then((response) => {
       if(response.data.token){
         localStorage.setItem("kinfirm-token", response.data.token);
+        router.go(0);
       }
       else {
         message.value = response.data.message;

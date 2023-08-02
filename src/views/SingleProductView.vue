@@ -42,23 +42,16 @@ const route = useRoute();
 const product: Ref<productResponse> = ref({});
 const similarProducts: Ref<[similarProductsResponse]> = ref({});
 
-axios.get('http://localhost/api/product/' + route.params.id, {
-  headers: {
-    'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
-  }
-}).then((response: axios.AxiosResponse<productResponse>) => {
-  product.value = response.data;
-  if (product.value.tags.length > 0) {
-    loadSimilarProducts(product.value.id);
-  }
-});
+axios.get(import.meta.env.VITE_API_ENDPOINT + 'product/' + route.params.id)
+    .then((response: axios.AxiosResponse<productResponse>) => {
+      product.value = response.data;
+      if (product.value.tags.length > 0) {
+        loadSimilarProducts(product.value.id);
+      }
+    });
 
 function loadSimilarProducts(id) {
-  axios.get('http://localhost/api/product/' + id + '/similar', {
-    headers: {
-      'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
-    }
-  }).then((response) => {
+  axios.get(import.meta.env.VITE_API_ENDPOINT + 'product/' + id + '/similar').then((response) => {
     similarProducts.value = response.data;
   })
 }
@@ -100,7 +93,7 @@ function loadSimilarProducts(id) {
           </div>
         </div>
       </div>
-      <div v-if="similarProducts">
+      <div v-if="similarProducts.length">
         <div class="text-center text-2xl">
           Similar products:
         </div>
