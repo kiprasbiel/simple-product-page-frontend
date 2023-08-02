@@ -39,11 +39,7 @@ const route = <routeMeta> useRoute();
 const router = useRouter();
 
 function logout() {
-  axios.post(import.meta.env.VITE_API_ENDPOINT + 'logout', {}, {
-    headers: {
-      'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
-    }
-  }).then(() => {
+  axios.post(import.meta.env.VITE_API_ENDPOINT + 'logout', {}).then(() => {
 
     router.push('login');
   });

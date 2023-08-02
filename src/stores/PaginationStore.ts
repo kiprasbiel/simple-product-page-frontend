@@ -48,11 +48,7 @@ export const usePaginationStore = defineStore("pagination", () => {
     }
 
     function getProducts() {
-        axios.get(getUrl(), {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem("kinfirm-token")
-            }
-        }).then((response: axios.AxiosResponse<productResponse>) => {
+        axios.get(getUrl()).then((response: axios.AxiosResponse<productResponse>) => {
             products.value = response.data.data;
             paginations.value = response.data.meta
         });
