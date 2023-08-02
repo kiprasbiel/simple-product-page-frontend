@@ -56,7 +56,7 @@ router.beforeEach(async (to: ToInterface) => {
     router.push('/login');
   }
   else if (!to.meta.requiresAuth && isLoggedIn) {
-    router.push('/about');
+    router.push('/products');
   }
 });
 
